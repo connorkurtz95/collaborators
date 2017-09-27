@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Collaborators</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="message"></string>
+    <string name="signIn">Sign in</string>
+    <string name="remember">Remember Credentials</string>
+    <string name="title_activity_main_screen">MainScreen</string>
+    <string name="profile">Profile</string>
+    <string name="signOut">Sign out</string>
+    <string name="yourCollaborations">Your Collaborations</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="save">Save</string>
+    <string name="updateProfile">Update Profile</string>
+    <string name="screenName">Screen Name</string>
+    <string name="email">Email</string>
+</resources>
