@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="@string/updateProfile"
-            android:onClick="signOut"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
     <TextView

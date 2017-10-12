@@ -8,8 +8,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.CheckBox;
 import android.widget.Toast;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private User user;
+    private AppDatabase database;
 
     private String rememberUsername = "";
     private String rememberPassword = "";
@@ -31,13 +35,32 @@ public class MainActivity extends AppCompatActivity {
             password.setText(rememberPassword);
             remember.setChecked(true);
         }
+
+        database = AppDatabase.getDatabase(getApplicationContext());
+
+        // cleanup for testing some initial data
+        database.userDao().removeAllUsers();
+        // add some data
+        List<User> users = database.userDao().getAllUser();
+        Toast t3 = Toast.makeText(this, "Users: " + users.size(), Toast.LENGTH_SHORT);
+        t3.show();
+        if (users.size()==0) {
+            database.userDao().addUser(new User(1, "username", "password", "screenname", "email"));
+            user = database.userDao().getAllUser().get(0);
+            Toast.makeText(this, "default user created.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void signIn(View view) {
         String usernameText = username.getText().toString();
         String passwordText = password.getText().toString();
         Boolean isChecked = remember.isChecked();
-        if(usernameText.compareTo("username") == 0 && passwordText.compareTo("password") == 0)
+
+        List<User> users = database.userDao().signInAttempt(usernameText,passwordText);
+        Toast t3 = Toast.makeText(this, "Users: " + users.size(), Toast.LENGTH_SHORT);
+        t3.show();
+
+        if(users.size() != 0)
         {
             if(isChecked)
             {
