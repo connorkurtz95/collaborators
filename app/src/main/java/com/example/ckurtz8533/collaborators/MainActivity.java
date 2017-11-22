@@ -29,17 +29,19 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.txtPassword);
         remember = (CheckBox) findViewById(R.id.chkRemember);
 
-        if(rememberUsername.compareTo("") != 0)
-        {
-            username.setText(rememberUsername);
-            password.setText(rememberPassword);
-            remember.setChecked(true);
-        }
-
         database = AppDatabase.getDatabase(getApplicationContext());
 
+        //List<SavedUser> savedUsers = database.savedUserDao().getUsers();
+
+        //if (savedUsers.size()==0) {
+        //    rememberUsername = savedUsers.get(savedUsers.size()-1).username;
+        //    rememberPassword = savedUsers.get(savedUsers.size()-1).password;
+        //    username.setText(rememberUsername);
+        //    password.setText(rememberPassword);
+        //}
+
         // cleanup for testing some initial data
-        database.userDao().removeAllUsers();
+        //database.userDao().removeAllUsers();
         // add some data
         List<User> users = database.userDao().getAllUser();
         Toast t3 = Toast.makeText(this, "Users: " + users.size(), Toast.LENGTH_SHORT);
@@ -62,10 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
         if(users.size() != 0)
         {
+            //database.savedUserDao().removeUser(usernameText);
+
             if(isChecked)
             {
-                rememberUsername = usernameText;
-                rememberPassword = passwordText;
+                //database.savedUserDao().addUser(new SavedUser(database.savedUserDao().count(),usernameText,passwordText));
 
                 Toast t2 = Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT);
                 t2.show();

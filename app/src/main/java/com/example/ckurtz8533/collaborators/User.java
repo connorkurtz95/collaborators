@@ -1,6 +1,3 @@
-/**
- * Created by ckurtz8533 on 10/12/2017.
- */
 package com.example.ckurtz8533.collaborators;
 
 import android.arch.persistence.room.Entity;
