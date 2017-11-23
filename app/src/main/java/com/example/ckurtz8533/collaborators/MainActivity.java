@@ -3,20 +3,21 @@ package com.example.ckurtz8533.collaborators;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.CheckBox;
 import android.widget.Toast;
 import java.util.List;
+import android.widget.TextView.OnEditorActionListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements OnEditorActionListener {
 
     private User user;
     private AppDatabase database;
 
-    private String rememberUsername = "";
-    private String rememberPassword = "";
     private EditText username;
     private EditText password;
     private CheckBox remember;
@@ -29,20 +30,9 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.txtPassword);
         remember = (CheckBox) findViewById(R.id.chkRemember);
 
+        username.setOnEditorActionListener((TextView.OnEditorActionListener) this);
+
         database = AppDatabase.getDatabase(getApplicationContext());
-
-        List<SavedUser> savedUsers = database.savedUserDao().getSavedUsers();
-
-        Toast t4 = Toast.makeText(this, "Saved Users: " + savedUsers.size(), Toast.LENGTH_SHORT);
-        t4.show();
-
-        if (savedUsers.size()!=0) {
-            rememberUsername = savedUsers.get(database.savedUserDao().savedUserMax()).username;
-            rememberPassword = savedUsers.get(database.savedUserDao().savedUserMax()).password;
-            username.setText(rememberUsername);
-            password.setText(rememberPassword);
-            remember.setChecked(true);
-        }
 
         // cleanup for testing some initial data
         //database.userDao().removeAllUsers();
@@ -77,11 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast t2 = Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT);
                 t2.show();
             }
-            else
-            {
-                rememberUsername = "";
-                rememberPassword = "";
-            }
 
             Intent intent = new Intent(this, HomeScreen.class);
             startActivity(intent);
@@ -91,5 +76,20 @@ public class MainActivity extends AppCompatActivity {
             Toast t2 = Toast.makeText(this, "Incorrect username or password.", Toast.LENGTH_SHORT);
             t2.show();
         }
+    }
+
+    @Override
+    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+        String userPassword = database.savedUserDao().getSavedPassword(username.getText().toString());
+
+        Toast t2 = Toast.makeText(this, "Password: " + userPassword, Toast.LENGTH_SHORT);
+        t2.show();
+
+        if (userPassword != null && userPassword != "") {
+            password.setText(userPassword);
+            remember.setChecked(true);
+        }
+
+        return false;
     }
 }

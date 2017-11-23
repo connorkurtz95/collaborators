@@ -21,6 +21,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\ckurtz8533\.android\build-cache\4d9dc2a9f926531281c12400d054fe8fe9fd2d9b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\ckurtz8533\StudioProjects\collaborators\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e935021e1b60cda58d5891c3210e61b1d2a45bf4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\ckurtz8533\.android\build-cache\d91d05463ca4da3dd76a8d0bd3d8b67316a2b646\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -111,15 +120,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\ckurtz8533\.android\build-cache\d16b16a8ea2254cf82d093e1d62cf02605623b3b\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="C:\Users\ckurtz8533\StudioProjects\collaborators\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e90b9efaa60a4c7b1da38baa1d3b15e448bf96ec\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\ckurtz8533\.android\build-cache\b4514dfaec11a59f6326ea7f65ca694c29ee38fa\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -156,12 +156,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\ckurtz8533\.gradle\caches\modules-2\files-2.1\com.android.support.constraint\constraint-layout-solver\1.0.2\b9cd8fc6bd15cb915735d34535db30ece0c44603\constraint-layout-solver-1.0.2.jar"
+        jar="E:\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="C:\Users\ckurtz8533\StudioProjects\collaborators\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_7d37fd14b7f324a426716af60af257d7ef74715d\classes.dex" />
+        <dex dex="C:\Users\ckurtz8533\StudioProjects\collaborators\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_1fab95ed971bcbde83d7e166f54a6335562e9872\classes.dex" />
     </item>
     <item
         is-multidex="true"
