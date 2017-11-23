@@ -25,9 +25,12 @@ public interface SavedUserDao {
     @Query("delete from savedUser where username = :username")
     void removeSavedUser(String username);
 
-    @Query("select count(id) from savedUser")
-    public int savedUserCount();
+    @Query("select max(id) from savedUser")
+    public int savedUserMax();
 
     @Query("delete from savedUser")
     void removeAllSavedUsers();
+
+    @Query("select password from savedUser where username = :username")
+    public String getSavedPassword(String username);
 }

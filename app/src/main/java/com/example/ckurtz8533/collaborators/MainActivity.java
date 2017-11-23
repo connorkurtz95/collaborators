@@ -31,14 +31,18 @@ public class MainActivity extends AppCompatActivity {
 
         database = AppDatabase.getDatabase(getApplicationContext());
 
-        //List<SavedUser> savedUsers = database.savedUserDao().getUsers();
+        List<SavedUser> savedUsers = database.savedUserDao().getSavedUsers();
 
-        //if (savedUsers.size()==0) {
-        //    rememberUsername = savedUsers.get(savedUsers.size()-1).username;
-        //    rememberPassword = savedUsers.get(savedUsers.size()-1).password;
-        //    username.setText(rememberUsername);
-        //    password.setText(rememberPassword);
-        //}
+        Toast t4 = Toast.makeText(this, "Saved Users: " + savedUsers.size(), Toast.LENGTH_SHORT);
+        t4.show();
+
+        if (savedUsers.size()!=0) {
+            rememberUsername = savedUsers.get(database.savedUserDao().savedUserMax()).username;
+            rememberPassword = savedUsers.get(database.savedUserDao().savedUserMax()).password;
+            username.setText(rememberUsername);
+            password.setText(rememberPassword);
+            remember.setChecked(true);
+        }
 
         // cleanup for testing some initial data
         //database.userDao().removeAllUsers();
@@ -64,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
         if(users.size() != 0)
         {
-            //database.savedUserDao().removeUser(usernameText);
+            database.savedUserDao().removeSavedUser(usernameText);
 
             if(isChecked)
             {
-                //database.savedUserDao().addUser(new SavedUser(database.savedUserDao().count(),usernameText,passwordText));
+                database.savedUserDao().addSavedUser(new SavedUser(database.savedUserDao().savedUserMax(),usernameText,passwordText));
 
                 Toast t2 = Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT);
                 t2.show();
