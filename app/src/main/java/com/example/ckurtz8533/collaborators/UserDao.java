@@ -20,7 +20,10 @@ public interface UserDao {
     public List<User> getAllUser();
 
     @Query("select * from user where id = :userId")
-    public List<User> getUser(long userId);
+    public User getUser(int userId);
+
+    @Query("select * from user where username = :username")
+    public List<User> getUserByUsername(String username);
 
     @Query("select * from user where username = :username AND password = :password")
     public List<User> signInAttempt(String username, String password);

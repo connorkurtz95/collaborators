@@ -11,19 +11,30 @@ import android.content.Intent;
 
 public class HomeScreen extends AppCompatActivity {
 
+    private AppDatabase database;
+    private User user;
+
+    private TextView txtUsername;
     private TextView txtCollaborations1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        database = AppDatabase.getDatabase(getApplicationContext());
+        user = database.userDao().getUser(database.currentUserDao().getId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        txtCollaborations1 = (TextView) findViewById(R.id.txtCollaborations1);
+        txtUsername = (TextView) findViewById(R.id.txtHomeUsername);
+        txtUsername.setText(user.username);
 
+        txtCollaborations1 = (TextView) findViewById(R.id.txtCollaborations1);
         txtCollaborations1.setText("You have no open collaborations.");
     }
 
     public void signOut(View view) {
+        database.currentUserDao().signOut();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

@@ -12,15 +12,12 @@ public class User {
     public final int id;
     public String username;
     public String password;
-    public String screenName;
     public String email;
 
-    public User(int id, String username, String password,
-                String screenName, String email) {
+    public User(int id, String username, String password, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.screenName = screenName;
         this.email = email;
     }
 }

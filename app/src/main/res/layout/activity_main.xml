@@ -39,10 +39,25 @@
         android:gravity="top"
         android:hint="@string/message" />
 
-    <Button
-        android:layout_width="100dp"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:onClick="signIn"
-        android:text="@string/signIn" />
+        android:layout_width="fill_parent"
+        android:layout_marginTop="10dp">
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:onClick="createAccount"
+            android:layout_toLeftOf="@+id/btnSignIn"
+            android:text="@string/createAccount" />
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="signIn"
+            android:layout_alignParentRight="true"
+            android:text="@string/signIn" />
+    </RelativeLayout>
+
 </LinearLayout>

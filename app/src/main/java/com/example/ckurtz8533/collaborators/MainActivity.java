@@ -15,7 +15,6 @@ import android.widget.TextView.OnEditorActionListener;
 public class MainActivity extends AppCompatActivity
         implements OnEditorActionListener {
 
-    private User user;
     private AppDatabase database;
 
     private EditText username;
@@ -37,13 +36,22 @@ public class MainActivity extends AppCompatActivity
         // cleanup for testing some initial data
         //database.userDao().removeAllUsers();
         // add some data
+
         List<User> users = database.userDao().getAllUser();
         Toast t3 = Toast.makeText(this, "Users: " + users.size(), Toast.LENGTH_SHORT);
         t3.show();
+
         if (users.size()==0) {
-            database.userDao().addUser(new User(1, "username", "password", "screenname", "email"));
-            user = database.userDao().getAllUser().get(0);
+            database.userDao().addUser(new User(1, "username", "password", "email"));
             Toast.makeText(this, "default user created.", Toast.LENGTH_SHORT).show();
+        }
+
+        int currentID = database.currentUserDao().getId();
+
+        if(currentID != 0)
+        {
+            Intent intent = new Intent(this, HomeScreen.class);
+            startActivity(intent);
         }
     }
 
@@ -68,6 +76,7 @@ public class MainActivity extends AppCompatActivity
                 t2.show();
             }
 
+            database.currentUserDao().signIn(new CurrentUser(database.userDao().getUserByUsername(usernameText).get(0).id));
             Intent intent = new Intent(this, HomeScreen.class);
             startActivity(intent);
         }
@@ -76,6 +85,11 @@ public class MainActivity extends AppCompatActivity
             Toast t2 = Toast.makeText(this, "Incorrect username or password.", Toast.LENGTH_SHORT);
             t2.show();
         }
+    }
+
+    public void createAccount(View view) {
+        Intent intent = new Intent(this, HomeScreen.class);
+        startActivity(intent);
     }
 
     @Override
