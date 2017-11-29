@@ -16,6 +16,9 @@
     <string name="email">Email</string>
     <string name="createAccount">Create Account</string>
     <string name="title_activity_create_account">Create Account</string>
+    <string name="startCollaboration">Start a Collaboration</string>
+    <string name="searchAUsername">Search by Username</string>
+    <string name="search">Search</string>
 
     <string name="title_activity_test">test</string>
     <string name="dummy_button">Dummy Button</string>
