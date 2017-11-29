@@ -15,4 +15,11 @@
     <string name="screenName">Screen Name</string>
     <string name="email">Email</string>
     <string name="createAccount">Create Account</string>
+    <string name="title_activity_create_account">Create Account</string>
+
+    <string name="title_activity_test">test</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_create">Create an Account</string>
 </resources>

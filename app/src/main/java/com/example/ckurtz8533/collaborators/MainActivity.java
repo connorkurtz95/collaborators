@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity
                 t2.show();
             }
 
-            database.currentUserDao().signIn(new CurrentUser(database.userDao().getUserByUsername(usernameText).get(0).id));
+            database.currentUserDao().signIn(new CurrentUser(database.userDao().getUserByUsername(usernameText).id));
             Intent intent = new Intent(this, HomeScreen.class);
             startActivity(intent);
         }
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void createAccount(View view) {
-        Intent intent = new Intent(this, HomeScreen.class);
+        Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
     }
 

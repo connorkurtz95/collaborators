@@ -23,7 +23,10 @@ public interface UserDao {
     public User getUser(int userId);
 
     @Query("select * from user where username = :username")
-    public List<User> getUserByUsername(String username);
+    public User getUserByUsername(String username);
+
+    @Query("select * from user where email = :email")
+    public User getUserByEmail(String email);
 
     @Query("select * from user where username = :username AND password = :password")
     public List<User> signInAttempt(String username, String password);
@@ -33,4 +36,7 @@ public interface UserDao {
 
     @Query("delete from user")
     void removeAllUsers();
+
+    @Query("select max(id) from user")
+    public int userMax();
 }

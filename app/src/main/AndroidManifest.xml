@@ -24,7 +24,21 @@
             android:name=".HomeScreen"
             android:label="@string/title_activity_home_screen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".CreateAccount"
+            android:label="@string/title_activity_create_account"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".test"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_test"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".create"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_create"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>
