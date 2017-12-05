@@ -44,4 +44,9 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startCollaboration(View view) {
+        Intent intent = new Intent(this, StartCollaboration.class);
+        startActivity(intent);
+    }
+
 }
