@@ -39,7 +39,12 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_create"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".StartCollaboration"></activity>
+        <activity android:name=".StartCollaboration" />
+        <activity android:name=".StartedCollaboration"></activity>
+        <service android:name=".CounterIntentService" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

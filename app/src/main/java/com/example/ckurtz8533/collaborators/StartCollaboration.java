@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class StartCollaboration extends AppCompatActivity {
 
     private AppDatabase database;
@@ -40,8 +42,29 @@ public class StartCollaboration extends AppCompatActivity {
         }
         else
         {
-            Toast t3 = Toast.makeText(this, userNameString + " exists, but this function does not work yet.", Toast.LENGTH_SHORT);
-            t3.show();
+            boolean alreadyC = false;
+            List<Collaboration> allCollaborations = database.collaborationDao().getCollaborationsByUser(database.currentUserDao().getId());
+
+            for (Collaboration cCollaboration: allCollaborations) {
+                if(cCollaboration.firstId == user.id || cCollaboration.secondId == user.id)
+                {
+                    alreadyC = true;
+                }
+            }
+
+            if(alreadyC)
+            {
+                Toast t3 = Toast.makeText(this, "You are already Collaborating with this user.", Toast.LENGTH_SHORT);
+                t3.show();
+            }
+            else
+            {
+                database.collaborationDao().addCollaboration(new Collaboration(database.collaborationDao().collaborationMax()+1,database.currentUserDao().getId(),user.id));
+
+                Intent intent = new Intent(this, StartedCollaboration.class);
+                intent.putExtra("username",userNameString);
+                startActivity(intent);
+            }
         }
     }
 }

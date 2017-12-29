@@ -10,7 +10,7 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 
-@Database(entities = {User.class, SavedUser.class, CurrentUser.class
+@Database(entities = {User.class, SavedUser.class, CurrentUser.class, Collaboration.class
 }, version = 16, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -19,6 +19,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract SavedUserDao savedUserDao();
     public abstract CurrentUserDao currentUserDao();
+    public abstract CollaborationDao collaborationDao();
 
     public static AppDatabase getDatabase(Context context) {
         if (INSTANCE == null) {

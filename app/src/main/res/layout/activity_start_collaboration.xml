@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="search"
-        android:text="@string/search" />
+        android:text="@string/startCollaboration" />
 
     <TextView
         android:layout_width="match_parent"

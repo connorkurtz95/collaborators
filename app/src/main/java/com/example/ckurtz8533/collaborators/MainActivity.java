@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity
         // add some data
 
         List<User> users = database.userDao().getAllUser();
-        Toast t3 = Toast.makeText(this, "Users: " + users.size(), Toast.LENGTH_SHORT);
-        t3.show();
 
         if (users.size()==0) {
             database.userDao().addUser(new User(1, "username", "password", "email"));
@@ -61,8 +59,6 @@ public class MainActivity extends AppCompatActivity
         Boolean isChecked = remember.isChecked();
 
         List<User> users = database.userDao().signInAttempt(usernameText,passwordText);
-        Toast t3 = Toast.makeText(this, "Users: " + users.size(), Toast.LENGTH_SHORT);
-        t3.show();
 
         if(users.size() != 0)
         {
@@ -95,9 +91,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
         String userPassword = database.savedUserDao().getSavedPassword(username.getText().toString());
-
-        Toast t2 = Toast.makeText(this, "Password: " + userPassword, Toast.LENGTH_SHORT);
-        t2.show();
 
         if (userPassword != null && userPassword != "") {
             password.setText(userPassword);

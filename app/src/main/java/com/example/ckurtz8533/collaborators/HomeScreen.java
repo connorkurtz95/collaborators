@@ -1,13 +1,21 @@
 package com.example.ckurtz8533.collaborators;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.content.Intent;
+import android.widget.AdapterView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -15,7 +23,6 @@ public class HomeScreen extends AppCompatActivity {
     private User user;
 
     private TextView txtUsername;
-    private TextView txtCollaborations1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +35,28 @@ public class HomeScreen extends AppCompatActivity {
         txtUsername = (TextView) findViewById(R.id.txtHomeUsername);
         txtUsername.setText(user.username);
 
-        txtCollaborations1 = (TextView) findViewById(R.id.txtCollaborations1);
-        txtCollaborations1.setText("You have no open collaborations.");
+        List<User> collaboratingUsers = database.collaborationDao().getCollaborationUsers(user.id);
+        ArrayList<User> arrayOfUsers = new ArrayList<User>();
+        CollaborationsAdapter adapter = new CollaborationsAdapter(this,arrayOfUsers);
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(adapter);
+
+        adapter.addAll(collaboratingUsers);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+                String item = ((TextView)view).getText().toString();
+
+                String eUsername = item.substring(19);
+
+                Intent intentBundle = new Intent (HomeScreen.this, StartedCollaboration.class);
+                intentBundle.putExtra("username",eUsername);
+                startActivity(intentBundle);
+            }
+        });
     }
 
     public void signOut(View view) {
@@ -37,6 +64,9 @@ public class HomeScreen extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+
+        Intent mServiceIntent = new Intent(this, CounterIntentService.class);
+        this.startService(mServiceIntent);
     }
 
     public void profile(View view) {
@@ -49,4 +79,8 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void listButton(View view) {
+        Intent intent = new Intent(this, StartCollaboration.class);
+        startActivity(intent);
+    }
 }

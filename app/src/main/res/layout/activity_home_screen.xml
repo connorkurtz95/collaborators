@@ -30,25 +30,22 @@
             android:layout_alignParentRight="true"
             android:text="@string/signOut" />
     </RelativeLayout>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:onClick="startCollaboration"
+        android:text="@string/startCollaboration" />
     <TextView
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/yourCollaborations"/>
-    <Button
-        android:layout_width="250dp"
-        android:layout_marginTop="15dp"
-        android:layout_height="wrap_content"
-        android:onClick="startCollaboration"
-        android:layout_gravity="center"
-        android:text="@string/startCollaboration" />
-    <TableLayout
+    <ListView
+        android:id="@id/list_view"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp">
-        <TextView
-            android:id="@+id/txtCollaborations1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </TableLayout>
+        android:layout_height="match_parent"></ListView>
 </LinearLayout>

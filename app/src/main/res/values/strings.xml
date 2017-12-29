@@ -26,4 +26,9 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="title_activity_create">Create an Account</string>
+    <string name="notifyWithMessenger">Notify With Messenger</string>
+    <string name="notifyWithEmail">Notify With Email</string>
+    <string name="returnToHome">Return</string>
+    <string name="notifyNew">You can click a button to communicate with your collaborator.</string>
+    <string name="downloadFile">Download Project</string>
 </resources>
